@@ -1,0 +1,16 @@
+@import "../variables";
+
+.QRCode {
+    transition: all 500ms;
+
+    .image {
+        height: 20rem;
+        width: 100%;
+        object-fit: contain;
+    }
+
+    .text {
+        text-align: center;
+        font: $font-body-bold;
+    }
+}

@@ -1,0 +1,50 @@
+@import "../variables";
+
+.headerWrapper {
+    height: $spacing-header-height;
+}
+
+.header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 10;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    width: 100vw;
+    height: $spacing-header-height;
+    padding: 0 $spacing-padding;
+    background: $color-background-header;
+    box-shadow: 0 4px 22px rgba(0, 0, 0, 5%);
+    backdrop-filter: blur(12px);
+
+    .headerLogo {
+        position: relative;
+        width: 3.75rem;
+        height: 3.75rem;
+        user-select: none;
+        filter: drop-shadow(0 0rem 0.3rem #0005);
+    }
+
+    .headerMenu {
+        display: flex;
+        flex-direction: row;
+
+        .headerMenuItem {
+            margin-left: 1rem;
+            padding: 0.625rem;
+            color: $color-tab-inactive;
+            font: $font-nav;
+            text-transform: uppercase;
+            cursor: pointer;
+            transition: color 250ms;
+            user-select: none;
+        }
+
+        .headerMenuItem__active {
+            color: $color-tab-active;
+        }
+    }
+}

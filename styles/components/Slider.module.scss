@@ -1,0 +1,50 @@
+@import "../variables";
+
+.slider {
+    height: $spacing-base * 2;
+    display: flex;
+    align-items: center;
+}
+
+.track {
+    height: $spacing-base / 4;
+    background-color: $color-primary;
+}
+
+.mark {
+
+}
+
+.thumb {
+    width: $spacing-base * 2;
+    height: $spacing-base * 2;
+    background-color: $color-primary-light;
+    border-radius: 50%;
+
+    .thumbIcon {
+        width: $spacing-base * 2;
+        height: $spacing-base * 2;
+        opacity: 0;
+        transition: all 500ms ease-in-out;
+    }
+
+
+    &:hover {
+        .thumbIcon {
+            transform: scale(2);
+            opacity: 1;
+        }
+    }
+}
+
+.thumbActive {
+    .thumbIcon {
+        transform: scale(2);
+        opacity: 1;
+    }
+}
+
+.thumbHitSlop {
+    width: $spacing-base * 4;
+    height: $spacing-base * 4;
+}

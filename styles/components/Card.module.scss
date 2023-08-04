@@ -1,0 +1,11 @@
+@import "../variables";
+
+.card {
+    position: relative;
+    gap: $spacing-padding;
+    width: 100%;
+    padding: $spacing-padding;
+    background-color: $color-background-card;
+    border-radius: $border-radius-card;
+    box-shadow: 0 4px 22px rgba(0, 0, 0, 5%);
+}

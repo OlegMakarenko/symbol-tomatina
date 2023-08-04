@@ -1,0 +1,26 @@
+@import "../variables";
+
+.root {
+    position: absolute;
+    width: 20rem;
+    height: 80rem;
+    background-repeat: repeat;
+    background-position: top left;
+    background-size: 100% auto;
+}
+
+.tomato {
+    top: 0;
+    left: 0;
+    position: absolute;
+    width: 82%;
+    aspect-ratio: 1 / 1;
+    opacity: 1;
+}
+
+.image {
+
+    position: absolute;
+    width: 100%;
+    height: 100%;
+}

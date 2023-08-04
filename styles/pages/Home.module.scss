@@ -1,0 +1,64 @@
+@import "../variables";
+
+.wrapper {
+    height: 100%;
+}
+
+.backgroundTopLeft {
+    z-index: 1;
+    left: 0;
+    top: 0;
+}
+
+.backgroundBottomLeft {
+    z-index: 1;
+    top: 80rem;
+    left: 0;
+}
+
+.backgroundTopRight {
+    z-index: 1;
+    right: -10rem;
+    top: 0;
+}
+
+.backgroundBottomRight {
+    z-index: 1;
+    right: -10rem;
+    top: 80rem;
+}
+
+.card {
+    z-index: 2;
+}
+
+.hero {
+    height: 50vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    white-space: pre-wrap;
+}
+
+.tomatoSticker {
+    height: 100%;
+    width: 100%;
+}
+
+@media #{$screen-mobile} {
+    .backgroundTopLeft {
+        display: none;
+    }
+
+    .backgroundBottomLeft {
+        display: none;
+    }
+
+    .backgroundTopRight {
+        display: none;
+    }
+
+    .backgroundBottomRight {
+        display: none;
+    }
+}
