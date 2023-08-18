@@ -40,9 +40,13 @@
     white-space: pre-wrap;
 }
 
+.controls {
+    min-width: 50%;
+}
+
 .tomatoSticker {
     height: 100%;
-    width: 100%;
+    width: 50%;
 }
 
 @media #{$screen-mobile} {
@@ -60,5 +64,10 @@
 
     .backgroundBottomRight {
         display: none;
+    }
+
+    .tomatoSticker {
+        margin: 0 auto;
+        width: 100%;
     }
 }

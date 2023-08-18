@@ -1,43 +1,30 @@
 import styles from '@/styles/pages/Home.module.scss';
 import Head from 'next/head';
-import { useTranslation } from 'next-i18next';
-import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 import Card from '@/components/Card';
 import Field from '@/components/Field';
 import Separator from '@/components/Separator';
 import Slider from '@/components/Slider';
-import ColorPicker from '@/components/ColorPicker';
-import TomatoSticker from '@/components/TomatoSticker';
 import { useEffect, useState } from 'react';
 import ValueAccountBalance from '@/components/ValueAccountBalance';
 import ValueCopy from '@/components/ValueCopy';
 import config from '@/config';
-import { TransactionQR } from 'symbol-qr-library';
 import QRCode from '@/components/QRCode';
 import Button from '@/components/Button';
 import Modal from '@/components/Modal';
 import { useToggle } from '@/utils';
 import { toast } from 'react-toastify';
 import TomatoesBackground from '@/components/TomatoesBackground';
+import TomatoStickerPNG from '@/components/TomatoStickerPNG';
 
-export const getServerSideProps = async ({ locale }) => {
-	//const blocksPage = await getBlockPage();
-
-	return {
-		props: {
-			//blocks: blocksPage.data,
-			...(await serverSideTranslations(locale, ['common']))
-		}
-	};
-};
-
-const Home = ({ blocks }) => {
-	const { t } = useTranslation();
+const Home = ({ }) => {
+	const t = text => text;
 	const [isQRVisible, toggleIsQRVisible] = useToggle(false);
-	const [bodySize, setBodySize] = useState(50);
+	const [armLeft, setArmLeft] = useState(0);
+	const [armRight, setArmRight] = useState(0);
 	const [eyes, setEyes] = useState(0);
-	const [hands, setHands] = useState(0);
 	const [legs, setLegs] = useState(0);
+	const [mouth, setMouth] = useState(0);
+	const [stem, setStem] = useState(0);
 	const [color, setColor] = useState('#f44336');
 	const [greenColor, setGreenColor] = useState('#009688');
 
@@ -45,16 +32,14 @@ const Home = ({ blocks }) => {
 	const [message, setMessage] = useState('-');
 	const [namespace, setNamespace] = useState(0);
 
-	const getFormattedBodySize = () => bodySize / 100;
-
 	const launchSSS = () => {
 		toast.error(t('Not implemented'));
 	}
 
 	useEffect(() => {
-		const message = [bodySize, eyes, hands, legs, color, greenColor].join(',');
+		const message = [armLeft, armRight, eyes, legs, mouth, stem].join(',');
 		setMessage(message);
-	}, [bodySize, eyes, hands, legs, color, greenColor])
+	}, [armLeft, armRight, eyes, legs, mouth, stem])
 
 	return (
 		<div className={styles.wrapper}>
@@ -77,36 +62,41 @@ const Home = ({ blocks }) => {
 					<div className="layout-flex-col">
 						<h3>Customize your tomato</h3>
 						<div className="layout-flex-row layout-flex-mobile-reverse">
-
-							<div className="layout-flex-col-fields" id="section-create">
-
-								<Field title="Size">
-									<Slider value={bodySize} min={30} max={70} onChange={setBodySize} />
+							<div className={`layout-flex-col-fields ${styles.controls}`}>
+								<Field title="Left Arm">
+									<Slider value={armLeft} min={0} max={9} onChange={setArmLeft} />
+								</Field>
+								<Field title="Right Arm">
+									<Slider value={armRight} min={0} max={9} onChange={setArmRight} />
 								</Field>
 								<Field title="Eyes">
-									<Slider value={eyes} min={0} max={5} onChange={setEyes} />
-								</Field>
-								<Field title="Hands">
-									<Slider value={hands} min={0} max={4} onChange={setHands} />
+									<Slider value={eyes} min={0} max={19} onChange={setEyes} />
 								</Field>
 								<Field title="Legs">
-									<Slider value={legs} min={0} max={3} onChange={setLegs} />
+									<Slider value={legs} min={0} max={9} onChange={setLegs} />
 								</Field>
-								<Field title="Body">
+								<Field title="Mouth">
+									<Slider value={mouth} min={0} max={19} onChange={setMouth} />
+								</Field>
+								<Field title="Stem">
+									<Slider value={stem} min={0} max={9} onChange={setStem} />
+								</Field>
+
+								{/* <Field title="Body">
 									<ColorPicker value={color} onChange={setColor} />
 								</Field>
 								<Field title="Green">
 									<ColorPicker value={greenColor} onChange={setGreenColor} />
-								</Field>
+								</Field> */}
 							</div>
-							<TomatoSticker
+							<TomatoStickerPNG
 								className={styles.tomatoSticker}
-								bodySize={bodySize}
+								armLeft={armLeft}
+								armRight={armRight}
 								eyes={eyes}
-								hands={hands}
 								legs={legs}
-								color={color}
-								greenColor={greenColor}
+								mouth={mouth}
+								stem={stem}
 							/>
 						</div>
 						<Separator />
