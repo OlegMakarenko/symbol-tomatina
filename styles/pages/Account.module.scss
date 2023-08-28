@@ -40,8 +40,26 @@
     border-bottom: $spacing-base * 0.1 solid $color-text-body;
 }
 
+.tableHeaderMobile {
+    display: none;
+}
+
 .emptyListText {
     flex: 1;
     text-align: center;
     opacity: 0.7;
+}
+
+
+@media #{$screen-mobile} {
+    .tableHeader {
+        display: none;
+    }
+
+    .tableHeaderMobile {
+        width: 100%;
+        font: $font-h3;
+        text-align: center;
+        border-bottom: $spacing-base * 0.1 solid $color-text-body;
+    }
 }

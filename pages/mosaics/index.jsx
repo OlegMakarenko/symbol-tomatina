@@ -61,7 +61,7 @@ const AccountInfo = () => {
 				<div className="layout-flex-col">
 					<Card className={styles.card}>
 						<div className="layout-flex-col">
-							<Link href="/">{t('Back to Home')}</Link>
+							<a href="/">{t('Back to Home')}</a>
 							<h2>{t('Mosaic')}</h2>
 							{isLoading && (
 								<div className="layout-flex-center">

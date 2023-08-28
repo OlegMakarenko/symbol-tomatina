@@ -7,10 +7,6 @@ const Error = () => {
 			<Head>
 				<title>Error</title>
 			</Head>
-			<div>
-				<h2>404</h2>
-				Requested resource not found...
-			</div>
 		</div>
 	);
 };

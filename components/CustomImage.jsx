@@ -3,7 +3,7 @@ import Image from 'next/image';
 
 const CustomImage = ({ alt, src, className, style }) => (
 	<div className={`${styles.image} ${className}`} style={style}>
-		<Image src={src} fill alt={alt} />
+		<Image src={src} fill alt={alt} unoptimized />
 	</div>
 );
 

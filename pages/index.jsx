@@ -124,9 +124,6 @@ const Home = ({}) => {
 										onClick={launchSSS}
 									/>
 								</div>
-								<Modal isVisible={isQRVisible} onClose={toggleIsQRVisible}>
-									<QRCode address={config.ADDRESS} message={message} amount={config.PRICE} />
-								</Modal>
 							</div>
 						</div>
 					</Card>
@@ -136,6 +133,9 @@ const Home = ({}) => {
 							<AccountAddressInput />
 						</div>
 					</Card>
+					<Modal isVisible={isQRVisible} onClose={toggleIsQRVisible}>
+						<QRCode address={config.ADDRESS} message={message} amount={config.PRICE} />
+					</Modal>
 				</div>
 			</div>
 		</div>

@@ -83,7 +83,7 @@ const AccountInfo = () => {
 				<div className="layout-flex-col">
 					<Card className={styles.card}>
 						<div className="layout-flex-col">
-							<Link href="/">{t('Back to Home')}</Link>
+							<a href="/">{t('Back to Home')}</a>
 
 							<h2>{t('Account Activity')}</h2>
 							<AccountAddressInput address={address} />
@@ -101,7 +101,10 @@ const AccountInfo = () => {
 								</div>
 							)}
 							{!isLoading && (
-								<div className="layout-flex-row scroll-x">
+								<div className="layout-flex-row-mobile-col align-center-mobile">
+									<div className={styles.tableHeaderMobile}>
+										<div>{t('Received')}</div>
+									</div>
 									{receivedTomatoes.length > 0 && (
 										<div className="layout-flex-col">
 											{receivedTomatoes.map((item, index) => (
@@ -117,6 +120,9 @@ const AccountInfo = () => {
 										</div>
 									)}
 									{receivedTomatoes.length === 0 && <div className={styles.emptyListText}>{t('Nothing yet')}</div>}
+									<div className={styles.tableHeaderMobile}>
+										<div>{t('Sent')}</div>
+									</div>
 									{sentTomatoes.length > 0 && (
 										<div className="layout-flex-col">
 											{sentTomatoes.map((item, index) => (
