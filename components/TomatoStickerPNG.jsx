@@ -45,6 +45,8 @@ import Eyes17 from '@/public/images/eyes/Eyes_17.png';
 import Eyes18 from '@/public/images/eyes/Eyes_18.png';
 import Eyes19 from '@/public/images/eyes/Eyes_19.png';
 import Eyes20 from '@/public/images/eyes/Eyes_20.png';
+import EyesEyepatch from '@/public/images/eyes/eyepatch.png';
+import EyesSunglasses from '@/public/images/eyes/sunglasses.png';
 
 import Legs1 from '@/public/images/legs/feet_1.png';
 import Legs2 from '@/public/images/legs/feet_2.png';
@@ -56,6 +58,7 @@ import Legs7 from '@/public/images/legs/feet_7.png';
 import Legs8 from '@/public/images/legs/feet_8.png';
 import Legs9 from '@/public/images/legs/feet_9.png';
 import Legs10 from '@/public/images/legs/feet_10.png';
+import LegsSkateboard from '@/public/images/legs/skateboard.png';
 
 import Mouth1 from '@/public/images/mouth/Mouth-01.png';
 import Mouth2 from '@/public/images/mouth/Mouth-02.png';
@@ -141,7 +144,9 @@ const TomatoStickerPNG = ({ armLeft, armRight, eyes, legs, mouth, stem, classNam
 		Eyes17,
 		Eyes18,
 		Eyes19,
-		Eyes20
+		Eyes20,
+		EyesEyepatch,
+		EyesSunglasses,
 	][eyes] || Eyes1;
 	const legsImage = [
 		Legs1,
@@ -153,7 +158,8 @@ const TomatoStickerPNG = ({ armLeft, armRight, eyes, legs, mouth, stem, classNam
 		Legs7,
 		Legs8,
 		Legs9,
-		Legs10
+		Legs10,
+		LegsSkateboard,
 	][legs] || Legs1;
 	const mouthImage = [
 		Mouth1,

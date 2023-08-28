@@ -1,0 +1,49 @@
+@import "../variables";
+
+.wrapper {
+    height: 100%;
+}
+
+.wrapper {
+    height: 100%;
+}
+
+.backgroundTopLeft {
+    z-index: 1;
+    left: 0;
+    top: 0;
+}
+
+.backgroundBottomLeft {
+    z-index: 1;
+    top: 80rem;
+    left: 0;
+}
+
+.backgroundTopRight {
+    z-index: 1;
+    right: -10rem;
+    top: 0;
+}
+
+.backgroundBottomRight {
+    z-index: 1;
+    right: -10rem;
+    top: 80rem;
+}
+
+.card {
+    z-index: 2;
+}
+
+.image {
+    height: $spacing-base * 25;
+    width: $spacing-base * 30;
+    object-fit: contain;
+    flex-shrink: 0;
+}
+
+.mosaicInfo {
+    flex: 1;
+    overflow: hidden;
+}

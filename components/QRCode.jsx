@@ -10,7 +10,6 @@ const QRCode = ({ address, message, amount }) => {
 	const [generateImage, isImageLoading, image] = useDataManager(
         (address, amount, message) => {
 			const transaction = createSDKTransferTransaction(address, amount, message);
-			console.log({transaction})
 			return new TransactionQR(transaction, config.NETWORK_TYPE, config.GENERATION_HASH).toBase64().toPromise();
         },
         null,

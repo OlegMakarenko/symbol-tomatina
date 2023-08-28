@@ -1,27 +1,44 @@
-import Footer from '@/components/Footer';
 import styles from '@/styles/pages/Layout.module.scss';
-import TimeAgo from 'javascript-time-ago';
-import en from 'javascript-time-ago/locale/en.json';
-import ja from 'javascript-time-ago/locale/ja.json';
-import uk from 'javascript-time-ago/locale/uk.json';
-import zh from 'javascript-time-ago/locale/zh.json';
 import { appWithTranslation } from 'next-i18next';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import '@/styles/globals.scss';
+import { useEffect, useState } from 'react';
+import { useRouter } from 'next/router'
+import HomePage from '@/pages/index';
+import AccountPage from '@/pages/accounts/index';
+import MosaicPage from '@/pages/mosaics/index';
+import Footer from '@/components/Footer';
 
-TimeAgo.addDefaultLocale(en);
-TimeAgo.addLocale(uk);
-TimeAgo.addLocale(zh);
-TimeAgo.addLocale(ja);
+const routes = [{
+	pathName: '',
+	component: HomePage
+},{
+	pathName: 'accounts',
+	component: AccountPage
+},{
+	pathName: 'mosaics',
+	component: MosaicPage
+}]
 
 const App = ({ Component, pageProps }) => {
+	const router = useRouter()
+	const [pathName, setPathName] = useState(null);
+	const route = routes.find(route => route.pathName === pathName);
+
+	useEffect(() => {
+		const { pathname } = window.location;
+		const destructedPathName = pathname.slice(1).split('/');
+		setPathName(destructedPathName[0]);
+	}, [router.pathname]);
+
 	return (
 		<div className={styles.wrapper}>
 			<ToastContainer autoClose={2000} hideProgressBar pauseOnHover />
 			<div className={styles.contentContainer}>
 				<main className={styles.contentContainerInner}>
-					<Component {...pageProps} />
+					{!!route && <route.component {...pageProps} />}
+					{!route && <Component {...pageProps} />}
 				</main>
 			</div>
 			<Footer />

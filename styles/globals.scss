@@ -91,6 +91,12 @@ a {
     justify-content: space-between;
 }
 
+.layout-flex-row-mobile-col {
+    display: flex;
+    flex-direction: row;
+    gap: $spacing-padding;
+    justify-content: space-between;
+}
 
 .layout-section-row {
     display: flex;
@@ -120,6 +126,20 @@ a {
     display: flex;
     flex-direction: column;
     gap: $spacing-fields;
+}
+
+.layout-flex-center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.scroll-x {
+    overflow-x: auto;
+}
+
+.hide-mobile {
+    display: none;
 }
 
 :root {
@@ -164,17 +184,6 @@ a {
         font-size: $multiplier-font-mobile;
     }
 
-    .layout-flex-row {
-        flex-direction: column;
-        justify-content: space-between;
-    }
-
-    .layout-section-row {
-        flex-direction: column;
-        gap: 0;
-        justify-content: space-between;
-    }
-
     .no-mobile {
         display: none !important;
     }
@@ -182,6 +191,11 @@ a {
     .layout-flex-mobile-reverse {
         display: flex;
         flex-direction: column-reverse;
+    }
+
+    .layout-flex-row-mobile-col {
+        flex-direction: column;
+        justify-content: space-between;
     }
 }
 

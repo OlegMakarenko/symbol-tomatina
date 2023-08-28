@@ -11,30 +11,55 @@ import config from '@/config';
 import QRCode from '@/components/QRCode';
 import Button from '@/components/Button';
 import Modal from '@/components/Modal';
-import { useToggle } from '@/utils';
+import { sendWithSSS, useToggle } from '@/utils';
 import { toast } from 'react-toastify';
 import TomatoesBackground from '@/components/TomatoesBackground';
 import TomatoStickerPNG from '@/components/TomatoStickerPNG';
+import AccountAddressInput from '@/components/AccountAddressInput';
 
 const Home = ({ }) => {
 	const t = text => text;
 	const [isQRVisible, toggleIsQRVisible] = useToggle(false);
+	const [supply, setSupply] = useState(1);
 	const [armLeft, setArmLeft] = useState(0);
 	const [armRight, setArmRight] = useState(0);
 	const [eyes, setEyes] = useState(0);
 	const [legs, setLegs] = useState(0);
 	const [mouth, setMouth] = useState(0);
 	const [stem, setStem] = useState(0);
-	const [color, setColor] = useState('#f44336');
-	const [greenColor, setGreenColor] = useState('#009688');
-
-	const [amount, setAmount] = useState(0);
 	const [message, setMessage] = useState('-');
-	const [namespace, setNamespace] = useState(0);
 
-	const launchSSS = () => {
-		toast.error(t('Not implemented'));
+	const isPremium = true;
+	const sliderIcon = '';
+	const armLeftMax = isPremium ? 9 : 9;
+	const armRightMax = isPremium ? 9 : 9;
+	const eyesMax = isPremium ? 21 : 19;
+	const legsMax = isPremium ? 10 : 9;
+	const mouthMax = isPremium ? 19 : 19;
+	const stemMax  = isPremium ? 9 : 9;
+
+	const launchSSS = async () => {
+		if (!window.SSS) {
+			toast.error(t('SSS Extension is not installed in your browser or is blocked for this site'));
+			return;
+		}
+		try {
+			await sendWithSSS(config.ADDRESS, config.PRICE, message);
+			toast.info('Transaction announced. Awaiting confirmation');
+		}
+		catch (error) {
+			toast.error(error.message);
+		}
 	}
+
+	useEffect(() => {
+		if (armLeft > armLeftMax) setArmLeft(armLeftMax);
+		if (armRight > armRightMax) setArmRight(armRightMax);
+		if (eyes > eyesMax) setEyes(eyesMax);
+		if (legs > legsMax) setLegs(legsMax);
+		if (mouth > mouthMax) setMouth(mouthMax);
+		if (stem > stemMax) setStem(stemMax);
+	}, [supply]);
 
 	useEffect(() => {
 		const message = [armLeft, armRight, eyes, legs, mouth, stem].join(',');
@@ -58,77 +83,138 @@ const Home = ({ }) => {
 				<TomatoesBackground className={styles.backgroundBottomLeft} />
 				<TomatoesBackground className={styles.backgroundTopRight} />
 				<TomatoesBackground className={styles.backgroundBottomRight} />
-				<Card className={styles.card}>
-					<div className="layout-flex-col">
-						<h3>Customize your tomato</h3>
-						<div className="layout-flex-row layout-flex-mobile-reverse">
-							<div className={`layout-flex-col-fields ${styles.controls}`}>
-								<Field title="Left Arm">
-									<Slider value={armLeft} min={0} max={9} onChange={setArmLeft} />
-								</Field>
-								<Field title="Right Arm">
-									<Slider value={armRight} min={0} max={9} onChange={setArmRight} />
-								</Field>
-								<Field title="Eyes">
-									<Slider value={eyes} min={0} max={19} onChange={setEyes} />
-								</Field>
-								<Field title="Legs">
-									<Slider value={legs} min={0} max={9} onChange={setLegs} />
-								</Field>
-								<Field title="Mouth">
-									<Slider value={mouth} min={0} max={19} onChange={setMouth} />
-								</Field>
-								<Field title="Stem">
-									<Slider value={stem} min={0} max={9} onChange={setStem} />
-								</Field>
-
-								{/* <Field title="Body">
-									<ColorPicker value={color} onChange={setColor} />
-								</Field>
-								<Field title="Green">
-									<ColorPicker value={greenColor} onChange={setGreenColor} />
-								</Field> */}
-							</div>
-							<TomatoStickerPNG
-								className={styles.tomatoSticker}
-								armLeft={armLeft}
-								armRight={armRight}
-								eyes={eyes}
-								legs={legs}
-								mouth={mouth}
-								stem={stem}
-							/>
-						</div>
-						<Separator />
+				<div className="layout-flex-col">
+					<Card className={styles.card}>
 						<div className="layout-flex-col">
-							<div>
-								<h3>Grow it</h3>
-								<div>To generate your tomato NFT, send transfer transaction with the following fields:</div>
+							<h3>Customize your tomato</h3>
+							<div className="layout-flex-row layout-flex-mobile-reverse">
+								<div className={`layout-flex-col-fields ${styles.controls}`}>
+									{/* <Field title="Quantity">
+										<div className="layout-flex-row">
+											<Button
+												iconSrc="/images/icon-crown.png"
+												text="1"
+												isActive={supply === 1}
+												onClick={() => setSupply(1)}
+											/>
+											<Button
+												text="5"
+												isActive={supply === 5}
+												onClick={() => setSupply(5)}
+											/>
+											<Button
+												text="10"
+												isActive={supply === 10}
+												onClick={() => setSupply(10)}
+											/>
+											<Button
+												text="15"
+												isActive={supply === 20}
+												onClick={() => setSupply(20)}
+											/>
+										</div>
+									</Field> */}
+									<Field title="Left Arm">
+										<Slider
+											value={armLeft}
+											min={0}
+											max={armLeftMax}
+											imageSrc={sliderIcon}
+											onChange={setArmLeft}
+										/>
+									</Field>
+									<Field title="Right Arm">
+										<Slider
+											value={armRight}
+											min={0}
+											max={armRightMax}
+											imageSrc={sliderIcon}
+											onChange={setArmRight}
+										/>
+									</Field>
+									<Field title="Eyes">
+										<Slider
+											value={eyes}
+											min={0}
+											max={eyesMax}
+											imageSrc={sliderIcon}
+											onChange={setEyes}
+										/>
+									</Field>
+									<Field title="Legs">
+										<Slider
+											value={legs}
+											min={0}
+											max={legsMax}
+											imageSrc={sliderIcon}
+											onChange={setLegs}
+										/>
+									</Field>
+									<Field title="Mouth">
+										<Slider
+											value={mouth}
+											min={0}
+											max={mouthMax}
+											imageSrc={sliderIcon}
+											onChange={setMouth}
+										/>
+									</Field>
+									<Field title="Stem">
+										<Slider
+											value={stem}
+											min={0}
+											max={stemMax}
+											imageSrc={sliderIcon}
+											onChange={setStem}
+										/>
+									</Field>
+								</div>
+								<TomatoStickerPNG
+									className={styles.tomatoSticker}
+									armLeft={armLeft}
+									armRight={armRight}
+									eyes={eyes}
+									legs={legs}
+									mouth={mouth}
+									stem={stem}
+								/>
 							</div>
-							<div className="layout-flex-col-fields">
+							<Separator />
+							<div className="layout-flex-col">
+								<div>
+									<h3>Grow it</h3>
+									<div>To generate your tomato NFT, send transfer transaction with the following fields:</div>
+								</div>
+								<div className="layout-flex-col-fields">
 
-								<Field title="Address">
-									<ValueCopy value={config.ADDRESS} />
-								</Field>
-								<Field title="Message">
-									<ValueCopy value={message} />
-								</Field>
-								<Field title="Amount">
-									<ValueAccountBalance value={amount} />
-								</Field>
+									<Field title="Address">
+										<ValueCopy value={config.ADDRESS} />
+									</Field>
+									<Field title="Message">
+										<ValueCopy value={message} />
+									</Field>
+									<Field title="Amount">
+										<ValueAccountBalance value={config.PRICE} />
+									</Field>
 
+								</div>
+								<div className="layout-grid-row">
+									<Button text="Transaction QR" iconSrc="/images/icon-qr.png" onClick={toggleIsQRVisible} />
+									<Button text="Pay with SSS" iconSrc="/images/icon-sss.png"  className="no-mobile" onClick={launchSSS} />
+								</div>
+								<Modal isVisible={isQRVisible} onClose={toggleIsQRVisible}>
+									<QRCode address={config.ADDRESS} message={message} amount={config.PRICE} />
+								</Modal>
 							</div>
-							{/*   */}
-							<div className="layout-grid-row">
-								<Button text="Transaction QR" iconSrc="/images/icon-qr.png" onClick={toggleIsQRVisible} />
-								<Button text="Pay with SSS" iconSrc="/images/icon-sss.png"  className="no-mobile" onClick={launchSSS} />
-							</div>
-							<Modal isVisible={isQRVisible} onClose={toggleIsQRVisible}>
-								<QRCode address={config.ADDRESS} message={message} amount={amount} />
-							</Modal>
 						</div>
-					</div>
-				</Card>
+					</Card>
+					<Card className={styles.card}>
+						<div className="layout-flex-col">
+							<h3>Check Account Activity</h3>
+							<AccountAddressInput />
+						</div>
+					</Card>
+				</div>
 			</div>
 		</div>
 	);
