@@ -20,7 +20,6 @@ import AccountAddressInput from '@/components/AccountAddressInput';
 const Home = ({ }) => {
 	const t = text => text;
 	const [isQRVisible, toggleIsQRVisible] = useToggle(false);
-	const [supply, setSupply] = useState(1);
 	const [armLeft, setArmLeft] = useState(0);
 	const [armRight, setArmRight] = useState(0);
 	const [eyes, setEyes] = useState(0);
@@ -28,15 +27,6 @@ const Home = ({ }) => {
 	const [mouth, setMouth] = useState(0);
 	const [stem, setStem] = useState(0);
 	const [message, setMessage] = useState('-');
-
-	const isPremium = true;
-	const sliderIcon = '';
-	const armLeftMax = isPremium ? 9 : 9;
-	const armRightMax = isPremium ? 9 : 9;
-	const eyesMax = isPremium ? 21 : 19;
-	const legsMax = isPremium ? 10 : 9;
-	const mouthMax = isPremium ? 19 : 19;
-	const stemMax  = isPremium ? 9 : 9;
 
 	const launchSSS = async () => {
 		if (!window.SSS) {
@@ -53,15 +43,6 @@ const Home = ({ }) => {
 	}
 
 	useEffect(() => {
-		if (armLeft > armLeftMax) setArmLeft(armLeftMax);
-		if (armRight > armRightMax) setArmRight(armRightMax);
-		if (eyes > eyesMax) setEyes(eyesMax);
-		if (legs > legsMax) setLegs(legsMax);
-		if (mouth > mouthMax) setMouth(mouthMax);
-		if (stem > stemMax) setStem(stemMax);
-	}, [supply]);
-
-	useEffect(() => {
 		const message = [armLeft, armRight, eyes, legs, mouth, stem].join(',');
 		setMessage(message);
 	}, [armLeft, armRight, eyes, legs, mouth, stem])
@@ -75,8 +56,8 @@ const Home = ({ }) => {
 			<div>
 				<div className={styles.hero} id="section-home">
 					<div className="layout-flex-col-fields">
-						<h1>{'Welcome to\nSymbol Tomatina!'}</h1>
-						<h2>{'Create your unique tomato and throw it into someone!'}</h2>
+						<h1>{t('Welcome to\nSymbol Tomatina!')}</h1>
+						<h2>{t('Create your unique tomato and throw it into someone!')}</h2>
 					</div>
 				</div>
 				<TomatoesBackground className={styles.backgroundTopLeft} />
@@ -86,85 +67,54 @@ const Home = ({ }) => {
 				<div className="layout-flex-col">
 					<Card className={styles.card}>
 						<div className="layout-flex-col">
-							<h3>Customize your tomato</h3>
+							<h3>{t('Customize your tomato')}</h3>
 							<div className="layout-flex-row layout-flex-mobile-reverse">
 								<div className={`layout-flex-col-fields ${styles.controls}`}>
-									{/* <Field title="Quantity">
-										<div className="layout-flex-row">
-											<Button
-												iconSrc="/images/icon-crown.png"
-												text="1"
-												isActive={supply === 1}
-												onClick={() => setSupply(1)}
-											/>
-											<Button
-												text="5"
-												isActive={supply === 5}
-												onClick={() => setSupply(5)}
-											/>
-											<Button
-												text="10"
-												isActive={supply === 10}
-												onClick={() => setSupply(10)}
-											/>
-											<Button
-												text="15"
-												isActive={supply === 20}
-												onClick={() => setSupply(20)}
-											/>
-										</div>
-									</Field> */}
-									<Field title="Left Arm">
+									<Field title={t('Left Arm')}>
 										<Slider
 											value={armLeft}
 											min={0}
-											max={armLeftMax}
-											imageSrc={sliderIcon}
+											max={9}
 											onChange={setArmLeft}
 										/>
 									</Field>
-									<Field title="Right Arm">
+									<Field title={t('Right Arm')}>
 										<Slider
 											value={armRight}
 											min={0}
-											max={armRightMax}
-											imageSrc={sliderIcon}
+											max={9}
 											onChange={setArmRight}
 										/>
 									</Field>
-									<Field title="Eyes">
+									<Field title={t('Eyes')}>
 										<Slider
 											value={eyes}
 											min={0}
-											max={eyesMax}
-											imageSrc={sliderIcon}
+											max={21}
 											onChange={setEyes}
 										/>
 									</Field>
-									<Field title="Legs">
+									<Field title={t('Legs')}>
 										<Slider
 											value={legs}
 											min={0}
-											max={legsMax}
-											imageSrc={sliderIcon}
+											max={10}
 											onChange={setLegs}
 										/>
 									</Field>
-									<Field title="Mouth">
+									<Field title={t('Mouth')}>
 										<Slider
 											value={mouth}
 											min={0}
-											max={mouthMax}
-											imageSrc={sliderIcon}
+											max={19}
 											onChange={setMouth}
 										/>
 									</Field>
-									<Field title="Stem">
+									<Field title={t('Stem')}>
 										<Slider
 											value={stem}
 											min={0}
-											max={stemMax}
-											imageSrc={sliderIcon}
+											max={9}
 											onChange={setStem}
 										/>
 									</Field>
@@ -182,25 +132,25 @@ const Home = ({ }) => {
 							<Separator />
 							<div className="layout-flex-col">
 								<div>
-									<h3>Grow it</h3>
-									<div>To generate your tomato NFT, send transfer transaction with the following fields:</div>
+									<h3>{t('Grow it')}</h3>
+									<div>{t('To generate your tomato NFT, send transfer transaction with the following fields:')}</div>
 								</div>
 								<div className="layout-flex-col-fields">
 
-									<Field title="Address">
+									<Field title={t('Address')}>
 										<ValueCopy value={config.ADDRESS} />
 									</Field>
-									<Field title="Message">
+									<Field title={t('Message')}>
 										<ValueCopy value={message} />
 									</Field>
-									<Field title="Amount">
+									<Field title={t('Amount')}>
 										<ValueAccountBalance value={config.PRICE} />
 									</Field>
 
 								</div>
 								<div className="layout-grid-row">
-									<Button text="Transaction QR" iconSrc="/images/icon-qr.png" onClick={toggleIsQRVisible} />
-									<Button text="Pay with SSS" iconSrc="/images/icon-sss.png"  className="no-mobile" onClick={launchSSS} />
+									<Button text={t('Transaction QR')} iconSrc="/images/icon-qr.png" onClick={toggleIsQRVisible} />
+									<Button text={t('Pay with SSS')} iconSrc="/images/icon-sss.png"  className="no-mobile" onClick={launchSSS} />
 								</div>
 								<Modal isVisible={isQRVisible} onClose={toggleIsQRVisible}>
 									<QRCode address={config.ADDRESS} message={message} amount={config.PRICE} />
@@ -210,7 +160,7 @@ const Home = ({ }) => {
 					</Card>
 					<Card className={styles.card}>
 						<div className="layout-flex-col">
-							<h3>Check Account Activity</h3>
+							<h3>{t('Check Account Activity')}</h3>
 							<AccountAddressInput />
 						</div>
 					</Card>

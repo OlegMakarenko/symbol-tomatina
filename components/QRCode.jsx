@@ -13,7 +13,7 @@ const QRCode = ({ address, message, amount }) => {
 			return new TransactionQR(transaction, config.NETWORK_TYPE, config.GENERATION_HASH).toBase64().toPromise();
         },
         null,
-        console.log
+        console.error
     );
 
 	const containerVisibilityStyle = {

@@ -21,7 +21,6 @@ const AccountInfo = () => {
 		const nodeUrl = await fetchNodeUrl();
 		const createdNFTs = await fetchCreatedNFTs();
 		const transactions = [];
-		console.log(createdNFTs.map(item => item.mosaic_id))
 
 		let pageNumber = 1;
 		let isStartHeightReached = false
@@ -55,7 +54,7 @@ const AccountInfo = () => {
 			loadTransactions(address);
 		}
 		else {
-			toast.error('Incorrect Address');
+			toast.error(t('Incorrect Address'));
 		}
 	}, [])
 

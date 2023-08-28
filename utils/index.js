@@ -1,3 +1,3 @@
 export * from './helper';
 export * from './hooks';
-export * from './transaction';
+export * from './network';
