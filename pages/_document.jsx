@@ -4,6 +4,17 @@ export default function Document() {
 	return (
 		<Html>
 			<Head>
+				<link rel="shortcut icon" href="/favicon.png" />
+				<link rel="icon" href="/favicon.ico" />
+				<meta name="theme-color" content="#e04445" />
+				<meta name="description" content="Symbol Tomatina" />
+				<link rel="apple-touch-icon" href="/favicon.png" />
+				<link rel="/preview.png" href="image url" />
+				<meta property="og:title" content="Symbol Tomatina" />
+				<meta property="og:description" content="Create your unique tomato and throw it into someone!" />
+				<meta property="og:image" content="/preview.png" />
+				<meta property="og:image:width" content="1200" />
+				<meta property="og:image:height" content="630" />
 				<link rel="preconnect" href="https://fonts.googleapis.com" />
 				<link
 					// eslint-disable-next-line max-len
