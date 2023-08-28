@@ -92,7 +92,6 @@ import Stem8 from '@/public/images/stem/stem-08.png';
 import Stem9 from '@/public/images/stem/stem-09.png';
 import Stem10 from '@/public/images/stem/stem-10.png';
 
-
 import { useEffect, useState } from 'react';
 import { useDataManager } from '@/utils';
 
@@ -100,125 +99,73 @@ const TomatoStickerPNG = ({ armLeft, armRight, eyes, legs, mouth, stem, classNam
 	const [source, setSource] = useState('');
 
 	const bodyImage = [Body][0];
-	const armLeftImage = [
-		ArmLeft1,
-		ArmLeft2,
-		ArmLeft3,
-		ArmLeft4,
-		ArmLeft5,
-		ArmLeft6,
-		ArmLeft7,
-		ArmLeft8,
-		ArmLeft9,
-		ArmLeft10
-	][armLeft] || ArmLeft1;
-	const armRightImage = [
-		ArmRight1,
-		ArmRight2,
-		ArmRight3,
-		ArmRight4,
-		ArmRight5,
-		ArmRight6,
-		ArmRight7,
-		ArmRight8,
-		ArmRight9,
-		ArmRight10
-	][armRight] || ArmRight1;
-	const eyesImage = [
-		Eyes1,
-		Eyes2,
-		Eyes3,
-		Eyes4,
-		Eyes5,
-		Eyes6,
-		Eyes7,
-		Eyes8,
-		Eyes9,
-		Eyes10,
-		Eyes11,
-		Eyes12,
-		Eyes13,
-		Eyes14,
-		Eyes15,
-		Eyes16,
-		Eyes17,
-		Eyes18,
-		Eyes19,
-		Eyes20,
-		EyesEyepatch,
-		EyesSunglasses,
-	][eyes] || Eyes1;
-	const legsImage = [
-		Legs1,
-		Legs2,
-		Legs3,
-		Legs4,
-		Legs5,
-		Legs6,
-		Legs7,
-		Legs8,
-		Legs9,
-		Legs10,
-		LegsSkateboard,
-	][legs] || Legs1;
-	const mouthImage = [
-		Mouth1,
-		Mouth2,
-		Mouth3,
-		Mouth4,
-		Mouth5,
-		Mouth6,
-		Mouth7,
-		Mouth8,
-		Mouth9,
-		Mouth10,
-		Mouth11,
-		Mouth12,
-		Mouth13,
-		Mouth14,
-		Mouth15,
-		Mouth16,
-		Mouth17,
-		Mouth18,
-		Mouth19,
-		Mouth20
-	][mouth] || Mouth1;
-	const stemImage = [
-		Stem1,
-		Stem2,
-		Stem3,
-		Stem4,
-		Stem5,
-		Stem6,
-		Stem7,
-		Stem8,
-		Stem9,
-		Stem10
-	][stem] || Stem1;
+	const armLeftImage =
+		[ArmLeft1, ArmLeft2, ArmLeft3, ArmLeft4, ArmLeft5, ArmLeft6, ArmLeft7, ArmLeft8, ArmLeft9, ArmLeft10][armLeft] || ArmLeft1;
+	const armRightImage =
+		[ArmRight1, ArmRight2, ArmRight3, ArmRight4, ArmRight5, ArmRight6, ArmRight7, ArmRight8, ArmRight9, ArmRight10][armRight] ||
+		ArmRight1;
+	const eyesImage =
+		[
+			Eyes1,
+			Eyes2,
+			Eyes3,
+			Eyes4,
+			Eyes5,
+			Eyes6,
+			Eyes7,
+			Eyes8,
+			Eyes9,
+			Eyes10,
+			Eyes11,
+			Eyes12,
+			Eyes13,
+			Eyes14,
+			Eyes15,
+			Eyes16,
+			Eyes17,
+			Eyes18,
+			Eyes19,
+			Eyes20,
+			EyesEyepatch,
+			EyesSunglasses
+		][eyes] || Eyes1;
+	const legsImage = [Legs1, Legs2, Legs3, Legs4, Legs5, Legs6, Legs7, Legs8, Legs9, Legs10, LegsSkateboard][legs] || Legs1;
+	const mouthImage =
+		[
+			Mouth1,
+			Mouth2,
+			Mouth3,
+			Mouth4,
+			Mouth5,
+			Mouth6,
+			Mouth7,
+			Mouth8,
+			Mouth9,
+			Mouth10,
+			Mouth11,
+			Mouth12,
+			Mouth13,
+			Mouth14,
+			Mouth15,
+			Mouth16,
+			Mouth17,
+			Mouth18,
+			Mouth19,
+			Mouth20
+		][mouth] || Mouth1;
+	const stemImage = [Stem1, Stem2, Stem3, Stem4, Stem5, Stem6, Stem7, Stem8, Stem9, Stem10][stem] || Stem1;
 
 	const [updateImage, isLoading] = useDataManager(async () => {
-		const image = await mergeImages([
-			legsImage,
-			bodyImage,
-			armLeftImage,
-			armRightImage,
-			eyesImage,
-			mouthImage,
-			stemImage
-		]);
+		const image = await mergeImages([legsImage, bodyImage, armLeftImage, armRightImage, eyesImage, mouthImage, stemImage]);
 		setSource(image);
 	});
-
-	const loadingStyle = !isLoading ? styles.loading : '';
 	const extendedClassName = `${className} ${styles.sticker} `;
 
 	useEffect(() => {
 		updateImage();
 	}, [updateImage, eyes, mouth, legs]);
 
-	return (
-		<img src={source} className={extendedClassName} />
-	);
+	return <img src={source} className={extendedClassName} />;
 };
 
 export default TomatoStickerPNG;

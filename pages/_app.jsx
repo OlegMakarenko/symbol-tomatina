@@ -4,25 +4,29 @@ import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import '@/styles/globals.scss';
 import { useEffect, useState } from 'react';
-import { useRouter } from 'next/router'
+import { useRouter } from 'next/router';
 import HomePage from '@/pages/index';
 import AccountPage from '@/pages/accounts/index';
 import MosaicPage from '@/pages/mosaics/index';
 import Footer from '@/components/Footer';
 
-const routes = [{
-	pathName: '',
-	component: HomePage
-},{
-	pathName: 'accounts',
-	component: AccountPage
-},{
-	pathName: 'mosaics',
-	component: MosaicPage
-}]
+const routes = [
+	{
+		pathName: '',
+		component: HomePage
+	},
+	{
+		pathName: 'accounts',
+		component: AccountPage
+	},
+	{
+		pathName: 'mosaics',
+		component: MosaicPage
+	}
+];
 
 const App = ({ Component, pageProps }) => {
-	const router = useRouter()
+	const router = useRouter();
 	const [pathName, setPathName] = useState(null);
 	const route = routes.find(route => route.pathName === pathName);
 

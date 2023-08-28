@@ -1,12 +1,12 @@
 @import "../variables";
 
 .wrapper {
-    overflow: hidden;
     position: relative;
     display: flex;
     flex-direction: column;
     width: 100%;
     min-height: 100%;
+    overflow: hidden;
     background-size: cover;
     background-blend-mode: color-burn;
     transition: width 0.25s ease-in-out, opacity 0.25s ease-in-out;
@@ -73,12 +73,12 @@
     }
 
     @media #{$screen-mobile} {
-
         &::before {
-            background-image: url("/images/art-tomato-left.png");
             left: -2rem;
             width: 4rem;
+            background-image: url("/images/art-tomato-left.png");
         }
+
         .contentContainer {
             padding: 0 $spacing-content-container-margin-mobile;
 

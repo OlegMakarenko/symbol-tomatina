@@ -17,10 +17,12 @@ const Slider = ({ min, max, value, imageSrc, onChange }) => {
 				trackClassName={styles.track}
 				thumbActiveClassName={styles.thumbActive}
 				thumbClassName={styles.thumb}
-				renderThumb={(props) => <div {...props}>
-					<CustomImage className={styles.thumbIcon} src="/images/control-tomato.svg" />
-					<div className={styles.thumbHitSlop} />
-				</div>}
+				renderThumb={props => (
+					<div {...props}>
+						<CustomImage className={styles.thumbIcon} src="/images/control-tomato.svg" />
+						<div className={styles.thumbHitSlop} />
+					</div>
+				)}
 			/>
 			{!!imageSrc && <CustomImage className={styles.image} src={imageSrc} />}
 		</div>

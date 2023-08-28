@@ -4,13 +4,13 @@
     transition: all 500ms;
 
     .image {
-        height: 20rem;
         width: 100%;
+        height: 20rem;
         object-fit: contain;
     }
 
     .text {
-        text-align: center;
         font: $font-body-bold;
+        text-align: center;
     }
 }

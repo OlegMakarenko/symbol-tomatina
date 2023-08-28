@@ -18,12 +18,12 @@ const AccountAddressInput = ({ address }) => {
 		if (address) {
 			setAddressInput(address);
 		}
-	}, [address])
+	}, [address]);
 
 	return (
 		<div className={styles.accountAddressInput}>
 			<TextBox value={addressInput} placeholder={t('Address')} onChange={setAddressInput} />
-			<Button text={t('Show')} onClick={submitAddress}/>
+			<Button text={t('Show')} onClick={submitAddress} />
 		</div>
 	);
 };

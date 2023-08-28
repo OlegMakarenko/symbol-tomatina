@@ -5,27 +5,27 @@
 }
 
 .backgroundTopLeft {
-    z-index: 1;
-    left: 0;
     top: 0;
+    left: 0;
+    z-index: 1;
 }
 
 .backgroundBottomLeft {
-    z-index: 1;
     top: 80rem;
     left: 0;
+    z-index: 1;
 }
 
 .backgroundTopRight {
-    z-index: 1;
-    right: -10rem;
     top: 0;
+    right: -10rem;
+    z-index: 1;
 }
 
 .backgroundBottomRight {
-    z-index: 1;
-    right: -10rem;
     top: 80rem;
+    right: -10rem;
+    z-index: 1;
 }
 
 .card {
@@ -33,10 +33,10 @@
 }
 
 .hero {
-    height: 50vh;
     display: flex;
     flex-direction: column;
     justify-content: center;
+    height: 50vh;
     white-space: pre-wrap;
 }
 
@@ -45,8 +45,8 @@
 }
 
 .tomatoSticker {
-    height: 100%;
     width: 50%;
+    height: 100%;
 }
 
 @media #{$screen-mobile} {
@@ -67,7 +67,7 @@
     }
 
     .tomatoSticker {
-        margin: 0 auto;
         width: 100%;
+        margin: 0 auto;
     }
 }

@@ -1,9 +1,9 @@
 @import "../variables";
 
 .sticker {
+    opacity: 1;
     filter: drop-shadow(0 0 0.01rem #000) drop-shadow(0.2rem 0.2rem 0.2rem #222) blur(0.025rem);
     transition: all 50ms;
-    opacity: 1;
 }
 
 .loading {

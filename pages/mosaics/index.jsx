@@ -3,7 +3,16 @@ import Head from 'next/head';
 import Card from '@/components/Card';
 import { useEffect, useState } from 'react';
 import config from '@/config';
-import { fetchAccountTransactions, fetchCreatedNFTs, fetchNFTInfo, fetchNodeUrl, getMosaicByGroups, getRouteParam, isAddressValid, useDataManager } from '@/utils';
+import {
+	fetchAccountTransactions,
+	fetchCreatedNFTs,
+	fetchNFTInfo,
+	fetchNodeUrl,
+	getMosaicByGroups,
+	getRouteParam,
+	isAddressValid,
+	useDataManager
+} from '@/utils';
 import { toast } from 'react-toastify';
 import TomatoesBackground from '@/components/TomatoesBackground';
 import LoadingIndicator from '@/components/LoadingIndicator';
@@ -18,12 +27,15 @@ const AccountInfo = () => {
 	const [info, setInfo] = useState({ mosaicId });
 	const [imageSrc, setImageSrc] = useState('');
 
-	const [loadInfo, isLoading] = useDataManager(async (mosaicId) => {
-		const nodeUrl = await fetchNodeUrl();
-		const info = await fetchNFTInfo(mosaicId, nodeUrl);
-		setInfo(info);
-
-	}, {}, console.error);
+	const [loadInfo, isLoading] = useDataManager(
+		async mosaicId => {
+			const nodeUrl = await fetchNodeUrl();
+			const info = await fetchNFTInfo(mosaicId, nodeUrl);
+			setInfo(info);
+		},
+		{},
+		console.error
+	);
 
 	useEffect(() => {
 		const mosaicId = getRouteParam();
@@ -32,11 +44,9 @@ const AccountInfo = () => {
 			return;
 		}
 
-
 		setMosaicId(mosaicId);
 		loadInfo(mosaicId);
-	}, [])
-
+	}, []);
 
 	return (
 		<div className={styles.wrapper}>
@@ -51,9 +61,7 @@ const AccountInfo = () => {
 				<div className="layout-flex-col">
 					<Card className={styles.card}>
 						<div className="layout-flex-col">
-							<Link href="/">
-								{t('Back to Home')}
-							</Link>
+							<Link href="/">{t('Back to Home')}</Link>
 							<h2>{t('Mosaic')}</h2>
 							{isLoading && (
 								<div className="layout-flex-center">
@@ -62,18 +70,14 @@ const AccountInfo = () => {
 							)}
 							{!isLoading && (
 								<div className="layout-flex-row-mobile-col">
-									<img src={info.imageSrc} className={styles.image}/>
+									<img src={info.imageSrc} className={styles.image} />
 									<div className={styles.mosaicInfo}>
 										<div className="layout-flex-col-fields">
-											<Field title={t('Mosaic ID')}>
-												{info.mosaicId}
-											</Field>
+											<Field title={t('Mosaic ID')}>{info.mosaicId}</Field>
 											<Field title={t('Creator')}>
 												<ValueAccount address={info.creator} size="sm" />
 											</Field>
-											<Field title={t('Total Supply')}>
-												{info.supply}
-											</Field>
+											<Field title={t('Total Supply')}>{info.supply}</Field>
 											<Field title={t('Image Transaction Hash')}>
 												<ValueCopy value={info.imageTransactionHash} />
 											</Field>

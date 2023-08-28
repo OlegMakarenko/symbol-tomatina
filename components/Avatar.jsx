@@ -35,8 +35,8 @@ const AccountAvatar = ({ address }) => {
 			A: '/images/avatars/avatar-1.png',
 			B: '/images/avatars/avatar-2.png',
 			C: '/images/avatars/avatar-3.png',
-			D: '/images/avatars/avatar-4.png',
-		}
+			D: '/images/avatars/avatar-4.png'
+		};
 
 		const addressSecondChar = address[1].toUpperCase();
 		const src = addressSrcMap[addressSecondChar];
@@ -54,13 +54,12 @@ const AccountAvatar = ({ address }) => {
 	return <CustomImage src={image.src} className={styles.image} style={image.style} />;
 };
 
-
-const Avatar = ({ size, value}) => {
+const Avatar = ({ size, value }) => {
 	const sizeStyleMap = {
 		sm: styles.containerSm,
 		md: styles.containerMd,
 		lg: styles.containerLg,
-		xl: styles.containerXl,
+		xl: styles.containerXl
 	};
 
 	return (

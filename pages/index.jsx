@@ -17,7 +17,7 @@ import TomatoesBackground from '@/components/TomatoesBackground';
 import TomatoStickerPNG from '@/components/TomatoStickerPNG';
 import AccountAddressInput from '@/components/AccountAddressInput';
 
-const Home = ({ }) => {
+const Home = ({}) => {
 	const t = text => text;
 	const [isQRVisible, toggleIsQRVisible] = useToggle(false);
 	const [armLeft, setArmLeft] = useState(0);
@@ -36,16 +36,15 @@ const Home = ({ }) => {
 		try {
 			await sendWithSSS(config.ADDRESS, config.PRICE, message);
 			toast.info('Transaction announced. Awaiting confirmation');
-		}
-		catch (error) {
+		} catch (error) {
 			toast.error(error.message);
 		}
-	}
+	};
 
 	useEffect(() => {
 		const message = [armLeft, armRight, eyes, legs, mouth, stem].join(',');
 		setMessage(message);
-	}, [armLeft, armRight, eyes, legs, mouth, stem])
+	}, [armLeft, armRight, eyes, legs, mouth, stem]);
 
 	return (
 		<div className={styles.wrapper}>
@@ -71,52 +70,22 @@ const Home = ({ }) => {
 							<div className="layout-flex-row layout-flex-mobile-reverse">
 								<div className={`layout-flex-col-fields ${styles.controls}`}>
 									<Field title={t('Left Arm')}>
-										<Slider
-											value={armLeft}
-											min={0}
-											max={9}
-											onChange={setArmLeft}
-										/>
+										<Slider value={armLeft} min={0} max={9} onChange={setArmLeft} />
 									</Field>
 									<Field title={t('Right Arm')}>
-										<Slider
-											value={armRight}
-											min={0}
-											max={9}
-											onChange={setArmRight}
-										/>
+										<Slider value={armRight} min={0} max={9} onChange={setArmRight} />
 									</Field>
 									<Field title={t('Eyes')}>
-										<Slider
-											value={eyes}
-											min={0}
-											max={21}
-											onChange={setEyes}
-										/>
+										<Slider value={eyes} min={0} max={21} onChange={setEyes} />
 									</Field>
 									<Field title={t('Legs')}>
-										<Slider
-											value={legs}
-											min={0}
-											max={10}
-											onChange={setLegs}
-										/>
+										<Slider value={legs} min={0} max={10} onChange={setLegs} />
 									</Field>
 									<Field title={t('Mouth')}>
-										<Slider
-											value={mouth}
-											min={0}
-											max={19}
-											onChange={setMouth}
-										/>
+										<Slider value={mouth} min={0} max={19} onChange={setMouth} />
 									</Field>
 									<Field title={t('Stem')}>
-										<Slider
-											value={stem}
-											min={0}
-											max={9}
-											onChange={setStem}
-										/>
+										<Slider value={stem} min={0} max={9} onChange={setStem} />
 									</Field>
 								</div>
 								<TomatoStickerPNG
@@ -136,7 +105,6 @@ const Home = ({ }) => {
 									<div>{t('To generate your tomato NFT, send transfer transaction with the following fields:')}</div>
 								</div>
 								<div className="layout-flex-col-fields">
-
 									<Field title={t('Address')}>
 										<ValueCopy value={config.ADDRESS} />
 									</Field>
@@ -146,11 +114,15 @@ const Home = ({ }) => {
 									<Field title={t('Amount')}>
 										<ValueAccountBalance value={config.PRICE} />
 									</Field>
-
 								</div>
 								<div className="layout-grid-row">
 									<Button text={t('Transaction QR')} iconSrc="/images/icon-qr.png" onClick={toggleIsQRVisible} />
-									<Button text={t('Pay with SSS')} iconSrc="/images/icon-sss.png"  className="no-mobile" onClick={launchSSS} />
+									<Button
+										text={t('Pay with SSS')}
+										iconSrc="/images/icon-sss.png"
+										className="no-mobile"
+										onClick={launchSSS}
+									/>
 								</div>
 								<Modal isVisible={isQRVisible} onClose={toggleIsQRVisible}>
 									<QRCode address={config.ADDRESS} message={message} amount={config.PRICE} />

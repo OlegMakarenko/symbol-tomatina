@@ -1,6 +1,17 @@
-import config from "@/config";
-import { requestSign, setTransaction } from "sss-module";
-import { Address, Deadline, Mosaic, MosaicId, PlainMessage, RepositoryFactoryHttp, TransactionHttp, TransactionType, TransferTransaction, UInt64 } from "symbol-sdk";
+import config from '@/config';
+import { requestSign, setTransaction } from 'sss-module';
+import {
+	Address,
+	Deadline,
+	Mosaic,
+	MosaicId,
+	PlainMessage,
+	RepositoryFactoryHttp,
+	TransactionHttp,
+	TransactionType,
+	TransferTransaction,
+	UInt64
+} from 'symbol-sdk';
 
 export const formatDate = (dateStr, translate, showTime = false, showSeconds = false) => {
 	const months = ['jan', 'feb', 'mar', 'apr', 'may', 'jun', 'jul', 'aug', 'sep', 'oct', 'nov', 'dec'];
@@ -98,24 +109,23 @@ export const getRouteParam = () => {
 	const destructedPathName = pathname.slice(1).split('/');
 
 	return destructedPathName.pop();
-}
+};
 
-export const isAddressValid = (rawAddress) => {
-    try {
-        return Address.createFromRawAddress(rawAddress) && true;
-    }
-    catch {
-        return false;
-    }
+export const isAddressValid = rawAddress => {
+	try {
+		return Address.createFromRawAddress(rawAddress) && true;
+	} catch {
+		return false;
+	}
 };
 
 export const getMosaicRelativeAmountString = (absoluteAmount, divisibility) => {
-    if (divisibility === 0) {
-        return absoluteAmount;
-    }
+	if (divisibility === 0) {
+		return absoluteAmount;
+	}
 
-    const array = absoluteAmount.split('');
-    array.splice(absoluteAmount.length - divisibility, 0, '.');
+	const array = absoluteAmount.split('');
+	array.splice(absoluteAmount.length - divisibility, 0, '.');
 
-    return array.join('');
+	return array.join('');
 };

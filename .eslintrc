@@ -1,6 +1,5 @@
 {
   "extends": [
-    "../../_symbol/linters/javascript/default.eslintrc",
     "eslint-config-next",
     "plugin:import/react",
     "plugin:prettier/recommended"

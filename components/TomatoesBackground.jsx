@@ -9,12 +9,11 @@ const TomatoesBackground = ({ className }) => {
 	const [animationState, setAnimationState] = useState(new Array(7).fill(false));
 	const config = {
 		duration: 2000
-	}
+	};
 	const initialPosition = {
 		transform: `translate(0vw, 0vh) rotate(0deg)`,
 		config
 	};
-
 
 	const items = [
 		{
@@ -66,10 +65,10 @@ const TomatoesBackground = ({ className }) => {
 			top: '78%',
 			left: '-1%',
 			spring: useSpring(animationState[6] ? { transform: `translate(100vw, 100vh) rotate(180deg)` } : initialPosition)
-		},
+		}
 	];
 
-	const handleIntersection = (index) => {
+	const handleIntersection = index => {
 		setAnimationState(oldState => {
 			const newState = [...oldState];
 			newState[index] = true;
@@ -85,7 +84,7 @@ const TomatoesBackground = ({ className }) => {
 				return newState;
 			});
 		}, 10000);
-	}
+	};
 
 	return (
 		<div className={`${styles.root} ${className}`}>
@@ -101,15 +100,9 @@ const TomatoesBackground = ({ className }) => {
 					key={'tomato' + index}
 					onMouseEnter={() => handleIntersection(index)}
 				>
-					<animated.img
-						src="/images/art-tomato-2.png"
-						alt="Tomato"
-						className={styles.image}
-						style={item.spring}
-					/>
+					<animated.img src="/images/art-tomato-2.png" alt="Tomato" className={styles.image} style={item.spring} />
 				</div>
 			))}
-
 		</div>
 	);
 };

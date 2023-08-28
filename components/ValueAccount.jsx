@@ -16,17 +16,19 @@ const ValueAccount = ({ address, size, position, className }) => {
 			break;
 	}
 
-	const handleClick = (e) => {
+	const handleClick = e => {
 		e.stopPropagation();
 		e.preventDefault();
 		window.location.href = `/accounts/${address}`;
-	}
+	};
 
 	return (
 		<div className={`${styles.valueAccount} ${containerStyle} ${className}`}>
 			<Avatar type="account" value={address} size={size} />
 			<div className={styles.addressContainer}>
-				<Link className={textStyle} href={`/accounts/${address}`} onClick={handleClick}>{address}</Link>
+				<Link className={textStyle} href={`/accounts/${address}`} onClick={handleClick}>
+					{address}
+				</Link>
 				<ButtonCopy value={address} />
 			</div>
 		</div>

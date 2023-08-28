@@ -2,26 +2,26 @@
 
 .button {
     display: flex;
-    justify-content: center;
+    flex-shrink: 0;
+    gap: $spacing-base;
     align-items: center;
+    justify-content: center;
     min-width: 4rem;
     height: $spacing-base * 4;
-    cursor: pointer;
-    user-select: none;
-    padding: 0 $spacing-base * 2;
-    flex-shrink: 0;
-    border: $border-width-textbox solid $color-textbox-border;
-	font: $font-button;
-	outline: inherit;
-    gap: $spacing-base;
-    border-radius: $border-radius-button;
     margin: 0;
-    transition: all 250ms;
+    padding: 0 $spacing-base * 2;
+    font: $font-button;
     background-color: $color-background-card;
+    border: $border-width-textbox solid $color-textbox-border;
+    border-radius: $border-radius-button;
+    outline: inherit;
+    cursor: pointer;
+    transition: all 250ms;
+    user-select: none;
 
     &:hover {
-        background-color: $color-button-bg;
         color: $color-text-button;
+        background-color: $color-button-bg;
         opacity: 0.9;
     }
 
@@ -32,6 +32,6 @@
 }
 
 .buttonActive {
-    background-color: $color-button-bg;
     color: $color-text-button;
+    background-color: $color-button-bg;
 }

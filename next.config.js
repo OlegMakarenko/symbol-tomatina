@@ -1,7 +1,6 @@
 const i18nConfig = require('./next-i18next.config.js'); // eslint-disable-line import/extensions
 const webpack = require('webpack');
 
-
 module.exports = {
 	distDir: 'build',
 	reactStrictMode: true,
@@ -10,8 +9,8 @@ module.exports = {
 		ignoreDuringBuilds: true
 	},
 	images: {
-		unoptimized: true,
-	  },
+		unoptimized: true
+	},
 	webpack: (config, { isServer }) => {
 		// use a browser-optimized wasm for Ed25519 crypto operations
 		const moduleRegExp = /symbol-crypto-wasm-node/;
