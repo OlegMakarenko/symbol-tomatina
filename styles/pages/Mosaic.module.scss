@@ -47,8 +47,8 @@
 .explorerLink {
     display: flex;
     flex-direction: row;
-    align-items: center;
     gap: $spacing-base / 2;
+    align-items: center;
 }
 
 .explorerLinkIcon {
@@ -57,7 +57,7 @@
 }
 
 .explorerLinkText {
+    color: $color-primary;
     font: $font-body-bold;
     text-transform: uppercase;
-    color: $color-primary;
 }

@@ -131,5 +131,5 @@ export const getMosaicRelativeAmountString = (absoluteAmount, divisibility) => {
 };
 
 export const getMosaicRelativeAmount = (absoluteAmount, divisibility) => {
-    return absoluteAmount / Math.pow(10, divisibility);
+	return absoluteAmount / Math.pow(10, divisibility);
 };

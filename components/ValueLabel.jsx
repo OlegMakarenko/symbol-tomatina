@@ -6,19 +6,19 @@ const ValueLabel = ({ value }) => {
 		completed: '/images/icon-status-success.svg',
 		pending_settlement: '/images/icon-status-pending.svg',
 		pending_image_container: '/images/icon-status-pending.svg',
-		failed: '/images/icon-status-failed.svg',
+		failed: '/images/icon-status-failed.svg'
 	};
 	const styleMap = {
 		completed: styles.success,
 		pending_settlement: styles.warning,
 		pending_image_container: styles.warning,
-		failed: styles.danger,
+		failed: styles.danger
 	};
 	const textMap = {
 		completed: 'Completed',
 		pending_settlement: 'Pending',
 		pending_image_container: 'Image Uploading',
-		failed: 'Failed',
+		failed: 'Failed'
 	};
 
 	return (

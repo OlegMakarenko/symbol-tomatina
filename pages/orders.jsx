@@ -2,10 +2,7 @@ import styles from '@/styles/pages/Account.module.scss';
 import Head from 'next/head';
 import Card from '@/components/Card';
 import { useEffect } from 'react';
-import {
-	fetchOrders,
-	useDataManager
-} from '@/utils';
+import { fetchOrders, useDataManager } from '@/utils';
 import TomatoesBackground from '@/components/TomatoesBackground';
 import LoadingIndicator from '@/components/LoadingIndicator';
 import ItemOrder from '@/components/ItemOrder';

@@ -3,12 +3,7 @@ import Head from 'next/head';
 import Card from '@/components/Card';
 import { useEffect, useState } from 'react';
 import config from '@/config';
-import {
-	fetchNFTInfo,
-	fetchNodeUrl,
-	getRouteParam,
-	useDataManager
-} from '@/utils';
+import { fetchNFTInfo, fetchNodeUrl, getRouteParam, useDataManager } from '@/utils';
 import TomatoesBackground from '@/components/TomatoesBackground';
 import LoadingIndicator from '@/components/LoadingIndicator';
 import ValueAccount from '@/components/ValueAccount';
@@ -76,7 +71,11 @@ const AccountInfo = () => {
 											<Field title={t('Image Transaction Hash')}>
 												<ValueCopy value={info.imageTransactionHash} />
 											</Field>
-											<a className={styles.explorerLink} href={`${config.EXPLORER_URL}/mosaics/${mosaicId}`}  target="_blank">
+											<a
+												className={styles.explorerLink}
+												href={`${config.EXPLORER_URL}/mosaics/${mosaicId}`}
+												target="_blank"
+											>
 												<CustomImage className={styles.explorerLinkIcon} src="/images/icon-primary-explorer.png" />
 												<div className={styles.explorerLinkText}>{t('Show in Explorer')}</div>
 											</a>
