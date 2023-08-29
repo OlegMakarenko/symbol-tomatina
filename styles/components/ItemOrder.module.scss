@@ -30,7 +30,7 @@
 .infoRow {
     display: flex;
     flex-direction: row;
-    align-items: flex-end;
+    align-items: baseline;
     justify-content: space-between;
     width: 100%;
     padding-bottom:  $spacing-base / 2;
@@ -46,6 +46,7 @@
     .itemOrder {
         width: $spacing-base * 35;
         height: $spacing-base * 40;
+        align-items: flex-start;
     }
 
     .info {
