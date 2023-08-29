@@ -113,7 +113,7 @@ const AccountInfo = () => {
 													imageSrc={item.imageSrc}
 													amount={item.amount}
 													address={item.address}
-													addressTitle={t('Received from account')}
+													addressTitle={t('Received from')}
 													key={'receive' + index}
 												/>
 											))}
@@ -131,7 +131,7 @@ const AccountInfo = () => {
 													imageSrc={item.imageSrc}
 													amount={item.amount}
 													address={item.address}
-													addressTitle={t('Sent to account')}
+													addressTitle={t('Sent to')}
 													key={'sent' + index}
 												/>
 											))}
