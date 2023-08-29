@@ -6,8 +6,9 @@ import '@/styles/globals.scss';
 import { useEffect, useState } from 'react';
 import { useRouter } from 'next/router';
 import HomePage from '@/pages/index';
-import AccountPage from '@/pages/accounts/index';
-import MosaicPage from '@/pages/mosaics/index';
+import AccountPage from '@/pages/accounts';
+import MosaicPage from '@/pages/mosaics';
+import OrdersPage from '@/pages/orders';
 import Footer from '@/components/Footer';
 
 const routes = [
@@ -22,6 +23,10 @@ const routes = [
 	{
 		pathName: 'mosaics',
 		component: MosaicPage
+	},
+	{
+		pathName: 'orders',
+		component: OrdersPage
 	}
 ];
 

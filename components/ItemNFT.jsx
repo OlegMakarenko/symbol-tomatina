@@ -2,7 +2,7 @@ import styles from '@/styles/components/ItemNFT.module.scss';
 import ValueAccount from './ValueAccount';
 import Field from './Field';
 
-const ItemNFT = ({ className, id, imageSrc, amount, address, addressTitle }) => {
+const ItemNFT = ({ className, id, imageSrc, address, addressTitle }) => {
 	const handleClick = e => {
 		e.preventDefault();
 		window.location.href = `/mosaics/${id}`;
@@ -14,7 +14,6 @@ const ItemNFT = ({ className, id, imageSrc, amount, address, addressTitle }) => 
 			<div className={styles.info}>
 				<div className={styles.infoRow}>
 					<div className={styles.id}>ID: {id}</div>
-					{/* <div className={styles.amount}>{amount}</div> */}
 				</div>
 				<Field title={addressTitle}>
 					<ValueAccount address={address} size="md" className={styles.address} />

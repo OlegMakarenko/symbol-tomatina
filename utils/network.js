@@ -12,7 +12,7 @@ import {
 	TransferTransaction,
 	UInt64
 } from 'symbol-sdk';
-import { getMosaicRelativeAmountString } from './helper';
+import { getMosaicRelativeAmount, getMosaicRelativeAmountString } from './helper';
 
 export const fetchNodeUrl = async () => {
 	const response = await fetch(`${config.NEXT_PUBLIC_STATISTICS_SERVICE_URL}/nodes?filter=suggested&limit=5&ssl=true`);
@@ -25,6 +25,20 @@ export const fetchCreatedNFTs = async () => {
 	const response = await fetch(`${config.API_BASE_URL}/api/mosaics`);
 
 	return response.json();
+};
+
+export const fetchOrders = async () => {
+	const response = await fetch(`${config.API_BASE_URL}/api/orders`);
+	const orders = await response.json();
+
+	return orders.reverse().map(item => ({
+		mosaicId: item.mosaic_id ? item.mosaic_id.replace('0x', '').toUpperCase() : '',
+		creator: item.buyer_address,
+		imageSrc: item.image,
+		paidAmount: getMosaicRelativeAmount(item.paid, config.NATIVE_MOSAIC_DIVISIBILITY),
+		status: item.order_status,
+		orderTransactionHash: item.order_hash
+	}));
 };
 
 export const fetchNFTInfo = async (mosaicId, nodeUrl) => {

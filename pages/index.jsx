@@ -129,8 +129,12 @@ const Home = ({}) => {
 					</Card>
 					<Card className={styles.card}>
 						<div className="layout-flex-col">
-							<h3>{t('Check Account Activity')}</h3>
-							<AccountAddressInput />
+							<h3>{t('Tomato Explorer')}</h3>
+							<a href="/orders">{t('View the Order List')}</a>
+
+							<Field title={t('Account Activity')}>
+								<AccountAddressInput />
+							</Field>
 						</div>
 					</Card>
 					<Modal isVisible={isQRVisible} onClose={toggleIsQRVisible}>

@@ -1,0 +1,56 @@
+@import "../variables";
+
+.itemOrder {
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    gap: $spacing-padding;
+    align-items: center;
+    width: 100%;
+    padding: $spacing-padding;
+    background-color: $color-background-card;
+    border-radius: $border-radius-card;
+    box-shadow: 0 4px 22px rgba(0, 0, 0, 5%);
+    cursor: pointer;
+}
+
+.image {
+    width: $spacing-base * 30;
+    height: $spacing-base * 25;
+    object-fit: contain;
+}
+
+.info {
+    display: flex;
+    flex-direction: column;
+    gap: $spacing-base / 2;
+    padding: $spacing-padding;
+}
+
+.infoRow {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-end;
+    justify-content: space-between;
+    width: 100%;
+    padding-bottom:  $spacing-base / 2;
+    border-bottom: $spacing-base * 0.1 solid $color-primary;
+}
+
+.amount {
+    font: $font-highlighted;
+}
+
+
+@media #{$screen-mobile} {
+    .itemOrder {
+        width: $spacing-base * 35;
+        height: $spacing-base * 40;
+    }
+
+    .info {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+    }
+}

@@ -4,28 +4,22 @@ import Card from '@/components/Card';
 import { useEffect, useState } from 'react';
 import config from '@/config';
 import {
-	fetchAccountTransactions,
-	fetchCreatedNFTs,
 	fetchNFTInfo,
 	fetchNodeUrl,
-	getMosaicByGroups,
 	getRouteParam,
-	isAddressValid,
 	useDataManager
 } from '@/utils';
-import { toast } from 'react-toastify';
 import TomatoesBackground from '@/components/TomatoesBackground';
 import LoadingIndicator from '@/components/LoadingIndicator';
-import Link from 'next/link';
 import ValueAccount from '@/components/ValueAccount';
 import Field from '@/components/Field';
 import ValueCopy from '@/components/ValueCopy';
+import CustomImage from '@/components/CustomImage';
 
 const AccountInfo = () => {
 	const t = text => text;
 	const [mosaicId, setMosaicId] = useState('');
 	const [info, setInfo] = useState({ mosaicId });
-	const [imageSrc, setImageSrc] = useState('');
 
 	const [loadInfo, isLoading] = useDataManager(
 		async mosaicId => {
@@ -75,12 +69,17 @@ const AccountInfo = () => {
 										<div className="layout-flex-col-fields">
 											<Field title={t('Mosaic ID')}>{info.mosaicId}</Field>
 											<Field title={t('Creator')}>
-												<ValueAccount address={info.creator} size="sm" />
+												<ValueAccount address={info.creator} size="sm" className="no-mobile" />
+												<ValueAccount address={info.creator} size="md" className="no-desktop" />
 											</Field>
 											<Field title={t('Total Supply')}>{info.supply}</Field>
 											<Field title={t('Image Transaction Hash')}>
 												<ValueCopy value={info.imageTransactionHash} />
 											</Field>
+											<a className={styles.explorerLink} href={`${config.EXPLORER_URL}/mosaics/${mosaicId}`}  target="_blank">
+												<CustomImage className={styles.explorerLinkIcon} src="/images/icon-primary-explorer.png" />
+												<div className={styles.explorerLinkText}>{t('Show in Explorer')}</div>
+											</a>
 										</div>
 									</div>
 								</div>

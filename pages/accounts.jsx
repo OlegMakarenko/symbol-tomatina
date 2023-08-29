@@ -17,7 +17,6 @@ import TomatoesBackground from '@/components/TomatoesBackground';
 import LoadingIndicator from '@/components/LoadingIndicator';
 import ItemNFT from '@/components/ItemNFT';
 import AccountAddressInput from '@/components/AccountAddressInput';
-import Link from 'next/link';
 
 const AccountInfo = () => {
 	const t = text => text;

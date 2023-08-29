@@ -43,3 +43,21 @@
     flex: 1;
     overflow: hidden;
 }
+
+.explorerLink {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: $spacing-base / 2;
+}
+
+.explorerLinkIcon {
+    width: $spacing-base * 2;
+    height: $spacing-base * 2;
+}
+
+.explorerLinkText {
+    font: $font-body-bold;
+    text-transform: uppercase;
+    color: $color-primary;
+}
